@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Websocket</title>
+</head>
+<body>
+
+<script>
+
+const ws = new WebSocket('ws://127.0.0.1:9502');
+ws.onopen = function (evt) {
+    console.log("Connected to WebSocket server.");
+};
+
+ws.onclose = function (evt) {
+    console.log("Disconnected");
+};
+
+ws.onmessage = function (evt) {
+    console.log('Retrieved data from server: ' + evt.data);
+};
+
+ws.onerror = function (evt, e) {
+    console.log('Error occured: ' + evt.data);
+};
+const send = function (){
+    ws.send("{}")
+}
+</script>
+<button onclick="send()">发送</button>
+</body>
+</html>

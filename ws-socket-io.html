@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Socket-IO 4.x</title>
+    <!-- https://www.jsdelivr.com/package/npm/socket.io-client   -->
+    <!--    <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2.5.0/dist/socket.io.min.js"></script>-->
+    <!--    <script src="https://cdn.jsdelivr.net/npm/socket.io-client@3.0.4/dist/socket.io.min.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/socket.io-client@4.5.0/dist/socket.io.min.js"></script>
+
+</head>
+<body>
+这里已经连接上服务器, 但是服务器没有返回消息, 可能定义为握手失败 <br>
+<script>
+
+// const socket = io('ws://127.0.0.1:9052/', {
+//     path: '/',
+//     transports: ['websocket'],
+//     reconnection: true,
+// })
+const socket = io('http://127.0.0.1:9502', {
+    path: '/',
+    transports: ['websocket']
+})
+
+// socket-disconnected
+socket.on('connect', () => {
+    console.log('🏂🏻 🏂🏻 🏂  👌🏻 连接成功');
+});
+
+socket.on('connect_error', (error) => {
+    console.log('🏂🏻 🏂🏻 🏂 💀 ', 'connect_error', error);
+});
+socket.on('connect_timeout', (timeout) => {
+    console.log('🏂🏻 🏂🏻 🏂 💀 ', 'connect_timeout', timeout);
+});
+socket.on('disconnect', () => {
+    console.log('🏂🏻 🏂🏻 🏂 💀 ', 'disconnect');
+});
+
+socket.on('error', (error) => {
+    console.log('🏂🏻 🏂🏻 🏂 💀 ', 'error', error);
+});
+
+//监听消息频道
+socket.on('message', (data) => {
+    console.log('🏂🏻 🏂🏻 🏂  🧚🏻', data);
+});
+
+const send = function () {
+    socket.emit("some", "{}")
+}
+</script>
+<button onclick="send()">发送</button>
+</body>
+</html>

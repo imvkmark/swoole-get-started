@@ -1,0 +1,15 @@
+{
+    "name": "duoli/get-started.swoole",
+    "type": "project",
+    "authors": [
+        {
+            "name": "多厘",
+            "email": "zhaody901@126.com"
+        }
+    ],
+    "require-dev": {
+        "swoole/ide-helper": "~4.8"
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
