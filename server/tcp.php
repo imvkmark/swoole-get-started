@@ -3,7 +3,7 @@
 
 use Swoole\Server;
 
-$server = new Server('127.0.0.1', 9501);
+$server = new Server('', 9501);
 
 $server->on('Connect', function ($server, $fd) {
     echo "Tcp Client: Connected {$fd}" . PHP_EOL;
